@@ -13,15 +13,15 @@ Faceboxes build caffe on Linux and generatey pycaffe library. The prediction cod
 This implementation method makes sure the code is high efficiency in C/CPP and top interface is convenient in Python.
 
 
-In order to run the code on VS2015, in This code base, I forked Faceboxes code base, and made some modification on cmake files and cpp code.
+In order to run the code on VS2015, in this code base, I forked Faceboxes code base, and made some modification on cmake files and cpp code.
 
 
-### What has been changed compared to [Faceboxes](https://github.com/sfzhang15/FaceBoxes) 
+### Compared to [Faceboxes](https://github.com/sfzhang15/FaceBoxes), what has been changed 
 I forked Faceboxes on March 12 2019, and began to modify it.
-The commit ID of original Faceboxes is: eeb7b968cb2e4adc6b4b27c3d358a6333eebf047
+The commit ID of original Faceboxes is: eeb7b968cb2e4adc6b4b27c3d358a6333eebf047. <br>
 and the start commit ID of my modification is: a58a27004ddb19b43eeecbae9f173f01e934d081
 
-If you are interested in what has been changed compared to Faceboxes code base, Please compare those 2 commit IDs.
+If you are interested in what has been changed compared to Faceboxes code base, Please compare those upper 2 commit IDs.
 
 
 ### How to run this code base
@@ -37,6 +37,6 @@ If you are interested in what has been changed compared to Faceboxes code base, 
 
 ### In addition
 1) the model file in FaceBoxes_VS2015_0/models/faceboxes/faceboxes.caffemodel was downloaded from [Faceboxes](https://github.com/sfzhang15/FaceBoxes). It is a CPU-only version model.
-2) During your building the code, there might be some errors. Search is on Google or post your question on github.
+2) During your building the code, there might be some errors. Search them on Google or post your questions on github.
 3) You are wecome to point out any mistake in my modification.
 
