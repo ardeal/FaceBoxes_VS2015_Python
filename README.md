@@ -29,7 +29,7 @@ If you are interested in what has been changed compared to Faceboxes code base, 
 2) install VS2015 and Python3.5 on Windows 10. Python3.5 is corresponding to Anaconda3-4.2.0-Windows-x86_64.exe
 3) run command build_win_python35_vs2015.cmd in Faceboxes_VS2015/scripts folder on Windows command console.
 4) once step 3) is done successfuuly without any error, copy Faceboxes_VS2015/python/caffe folder to Anaconda3/Lib/site-packages. 
-5) run FaceBoxes_VS2015_0/testfd_pycaffe.py. If nothing is wrong, you probably be able to see the algorithms output in folder: FaceBoxes_VS2015_0/test/algo_output
+5) run FaceBoxes_VS2015_0/test/fd_pycaffe.py. If nothing is wrong, you probably be able to see the algorithms output in folder: FaceBoxes_VS2015_0/test/algo_output
 
 
 
@@ -37,6 +37,7 @@ If you are interested in what has been changed compared to Faceboxes code base, 
 
 ### In addition
 1) the model file in FaceBoxes_VS2015_0/models/faceboxes/faceboxes.caffemodel was downloaded from [Faceboxes](https://github.com/sfzhang15/FaceBoxes). It is a CPU-only version model.
-2) During your building the code, there might be some errors. Search them on Google or post your questions on github.
-3) You are wecome to point out any mistake in my modification.
+2) I have verified the code could be run on CPU correctly, but I didn't verify the GPU version.
+3) During your building the code, there might be some errors. Search them on Google or post your questions on github.
+4) You are wecome to point out any mistake in my modification.
 
