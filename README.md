@@ -17,8 +17,8 @@ In order to run the code on VS2015, in this code base, I forked Faceboxes code b
 
 
 ### Compared to [Faceboxes](https://github.com/sfzhang15/FaceBoxes), what has been changed 
-I forked Faceboxes on March 12 2019, and began to modify it.
-The commit ID of original Faceboxes is: eeb7b968cb2e4adc6b4b27c3d358a6333eebf047. <br>
+I forked Faceboxes on March 12 2019, and began to modify it. <br>
+The commit ID of original Faceboxes is: eeb7b968cb2e4adc6b4b27c3d358a6333eebf047, <br>
 and the start commit ID of my modification is: a58a27004ddb19b43eeecbae9f173f01e934d081
 
 If you are interested in what has been changed compared to Faceboxes code base, Please compare those upper 2 commit IDs.
@@ -28,7 +28,7 @@ If you are interested in what has been changed compared to Faceboxes code base, 
 1) git clone git@github.com:ardeal/FaceBoxes_VS2015.git
 2) install VS2015 and Python3.5 on Windows 10. Python3.5 is corresponding to Anaconda3-4.2.0-Windows-x86_64.exe
 3) run command build_win_python35_vs2015.cmd in Faceboxes_VS2015/scripts folder on Windows command console.
-4) once step 3) is done successfuuly without any error, copy Faceboxes_VS2015/python/caffe folder to Anaconda3/Lib/site-packages. Please be aware that copy caffe folder to site-packages.
+4) once step 3) is done successfuuly without any error, copy Faceboxes_VS2015/python/caffe folder to Anaconda3/Lib/site-packages. 
 5) run FaceBoxes_VS2015_0/testfd_pycaffe.py. If nothing is wrong, you probably be able to see the algorithms output in folder: FaceBoxes_VS2015_0/test/algo_output
 
 
