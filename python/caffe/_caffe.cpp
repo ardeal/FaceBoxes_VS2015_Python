@@ -18,6 +18,32 @@
 #include "caffe/layers/memory_data_layer.hpp"
 #include "caffe/layers/python_layer.hpp"
 #include "caffe/sgd_solvers.hpp"
+#include "caffe/layers/input_layer.hpp"
+#include "caffe/layers/conv_layer.hpp"
+#include "caffe/layers/cudnn_conv_layer.hpp"
+#include "caffe/layers/relu_layer.hpp"
+#include "caffe/layers/pooling_layer.hpp"
+#include "caffe/layers/softmax_layer.hpp"
+
+
+
+namespace caffe
+{
+	extern INSTANTIATE_CLASS(ConvolutionLayer);
+	REGISTER_LAYER_CLASS(Convolution);
+
+	extern INSTANTIATE_CLASS(ReLULayer);
+	REGISTER_LAYER_CLASS(ReLU);
+	
+	extern INSTANTIATE_CLASS(PoolingLayer);
+	REGISTER_LAYER_CLASS(Pooling);
+
+	extern INSTANTIATE_CLASS(SoftmaxLayer);
+	REGISTER_LAYER_CLASS(Softmax);
+	
+}
+
+
 
 // Temporary solution for numpy < 1.7 versions: old macro, no promises.
 // You're strongly advised to upgrade to >= 1.7.

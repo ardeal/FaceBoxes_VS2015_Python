@@ -1,6 +1,17 @@
 
 set(CMAKE_SOURCE_DIR ..)
-set(LINT_COMMAND ${CMAKE_SOURCE_DIR}/scripts/cpp_lint.py)
+
+message(STATUS "=======================================in lint.cmake ===============WIN32 == ${WIN32}")
+message(STATUS "=======================================in lint.cmake ===============PYTHON_EXECUTABLE == ${PYTHON_EXECUTABLE}")
+message(STATUS "=======================================in lint.cmake ===============EXCLUDED_FILES == ${EXCLUDED_FILES}")
+message(STATUS "=======================================in lint.cmake ===============python_executable == ${python_executable}")
+
+
+set(python_executable)
+if(WIN32)
+  set(python_executable ${PYTHON_EXECUTABLE})
+endif()
+set(LINT_COMMAND ${python_executable} ${CMAKE_SOURCE_DIR}/scripts/cpp_lint.py)
 set(SRC_FILE_EXTENSIONS h hpp hu c cpp cu cc)
 set(EXCLUDE_FILE_EXTENSTIONS pb.h pb.cc)
 set(LINT_DIRS include src/caffe examples tools python matlab)
@@ -22,7 +33,9 @@ foreach(ext ${EXCLUDE_FILE_EXTENSTIONS})
 endforeach()
 
 # exclude generated pb files
-list(REMOVE_ITEM LINT_SOURCES ${EXCLUDED_FILES})
+if(EXCLUDED_FILES)
+  list(REMOVE_ITEM LINT_SOURCES ${EXCLUDED_FILES})
+endif()
 
 execute_process(
     COMMAND ${LINT_COMMAND} ${LINT_SOURCES}

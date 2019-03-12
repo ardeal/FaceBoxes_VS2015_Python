@@ -1,3 +1,7 @@
+#if defined(_MSC_VER)
+#include <process.h>
+#define getpid() _getpid()
+#endif
 #include <boost/thread.hpp>
 #include <glog/logging.h>
 #include <cmath>
@@ -46,7 +50,13 @@ void GlobalInit(int* pargc, char*** pargv) {
   // Google logging.
   ::google::InitGoogleLogging(*(pargv)[0]);
   // Provide a backtrace on segfault.
+  
+  
+  #if !defined(_MSC_VER)
   ::google::InstallFailureSignalHandler();
+  #endif
+  
+  //::google::InstallFailureSignalHandler();
 }
 
 #ifdef CPU_ONLY  // CPU-only Caffe.
