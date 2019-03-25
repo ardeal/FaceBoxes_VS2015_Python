@@ -13,30 +13,30 @@ Faceboxes build caffe on Linux and generated pycaffe library. The prediction cod
 This implementation method makes sure the code is high efficiency in C/CPP and top interface is convenient in Python.
 
 
-In order to run the code on VS2015, in this code base, I forked Faceboxes code base, and made some modification on cmake files and cpp code.
+In order to run the code on VS2015, in this code base, I forked [Faceboxes](https://github.com/sfzhang15/FaceBoxes) code base, and made some modification on cmake files and cpp code.
 
 
 ### Compared to [Faceboxes](https://github.com/sfzhang15/FaceBoxes), what has been changed 
 I forked Faceboxes on March 12 2019, and began to modify it. <br>
 The commit ID of original Faceboxes is: eeb7b968cb2e4adc6b4b27c3d358a6333eebf047, <br>
-and the start commit ID of my modification is: d402cf767c7cef00b69c12028fb89cd66fed4171
+and the start commit ID of my modification is: 3a58e3e41ee69a67f1ee32d7432747b272294bfe
 
 If you are interested in what has been changed compared to Faceboxes code base, Please compare those upper 2 commit IDs.
 
 
 ### How to run this code base
-1) git clone git@github.com:ardeal/FaceBoxes_VS2015.git
+1) git clone  git@github.com:ardeal/FaceBoxes_VS2015_Python.git
 2) install VS2015 and Python3.5 on Windows 10. Python3.5 is corresponding to Anaconda3-4.2.0-Windows-x86_64.exe
-3) run command build_win_python35_vs2015.cmd in Faceboxes_VS2015/scripts folder on Windows command console.
-4) once step 3) is done successfuuly without any error, copy Faceboxes_VS2015/python/caffe folder to Anaconda3/Lib/site-packages. 
-5) run FaceBoxes_VS2015_0/test/fd_pycaffe.py. If nothing is wrong, you probably be able to see the algorithms output in folder: FaceBoxes_VS2015_0/test/algo_output
+3) run command build_win_python35_vs2015.cmd in Faceboxes_VS2015_Python/scripts folder on Windows command console.
+4) once step 3) is done successfuuly without any error, copy Faceboxes_VS2015_Python/python/caffe folder to Anaconda3/Lib/site-packages. 
+5) run FaceBoxes_VS2015_Python/test/fd_pycaffe.py. If nothing is wrong, you probably be able to see the algorithms output in folder: FaceBoxes_VS2015_Python/test/algo_output
 
 
 
 
 
 ### In addition
-1) the model file in FaceBoxes_VS2015_0/models/faceboxes/faceboxes.caffemodel was downloaded from [Faceboxes](https://github.com/sfzhang15/FaceBoxes). It is a CPU-only version model.
+1) the model file in FaceBoxes_VS2015_Python/models/faceboxes/faceboxes.caffemodel was downloaded from [Faceboxes](https://github.com/sfzhang15/FaceBoxes). It is a CPU-only version model.
 2) I have verified the code could be run on CPU correctly, but I didn't verify the GPU version.
 3) During your building the code, there might be some errors. Search them on Google or post your questions on github.
 4) You are wecome to point out any mistake in my modification.
