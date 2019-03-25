@@ -9,7 +9,7 @@ Faceboxes achieve the state-of-the-art detection performance on several face det
 FDDB. Code is available at [Faceboxes](https://github.com/sfzhang15/FaceBoxes).
 
 Faceboxes is based on SSD which is custormized from Caffe which is in C/CPP.
-Faceboxes build caffe on Linux and generatey pycaffe library. The prediction code which call the trained model is in Python.
+Faceboxes build caffe on Linux and generated pycaffe library. The prediction code which calls the trained model is in Python.
 This implementation method makes sure the code is high efficiency in C/CPP and top interface is convenient in Python.
 
 
@@ -19,7 +19,7 @@ In order to run the code on VS2015, in this code base, I forked Faceboxes code b
 ### Compared to [Faceboxes](https://github.com/sfzhang15/FaceBoxes), what has been changed 
 I forked Faceboxes on March 12 2019, and began to modify it. <br>
 The commit ID of original Faceboxes is: eeb7b968cb2e4adc6b4b27c3d358a6333eebf047, <br>
-and the start commit ID of my modification is: a58a27004ddb19b43eeecbae9f173f01e934d081
+and the start commit ID of my modification is: d402cf767c7cef00b69c12028fb89cd66fed4171
 
 If you are interested in what has been changed compared to Faceboxes code base, Please compare those upper 2 commit IDs.
 
