@@ -1,4 +1,4 @@
-# FaceBoxes_VS2015: Modify Faceboxes cource code and build it on VS2015
+# FaceBoxes_VS2015_Python: Modify Faceboxes cource code and build it on VS2015
 
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 
@@ -40,4 +40,15 @@ If you are interested in what has been changed compared to Faceboxes code base, 
 2) I have verified the code could be run on CPU correctly, but I didn't verify the GPU version.
 3) During your building the code, there might be some errors. Search them on Google or post your questions on github.
 4) You are wecome to point out any mistake in my modification.
+
+
+### Output of the code
+I tested a few images, and the output are followed:
+
+
+
+
+
+
+
 
