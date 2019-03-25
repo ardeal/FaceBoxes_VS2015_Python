@@ -45,6 +45,20 @@ If you are interested in what has been changed compared to Faceboxes code base, 
 ### Output of the code
 I tested a few images, and the output are followed:
 
+<p align="left">
+<img src="https://github.com/ardeal/FaceBoxes_VS2015_Python/blob/master/0_Parade_Parade_0_178.jpg" alt="FaceBoxes Performance" width="1024px">
+</p>
+
+
+<p align="left">
+<img src="https://github.com/ardeal/FaceBoxes_VS2015_Python/blob/master/1.jpg" alt="FaceBoxes Performance" width="1024px">
+</p>
+
+
+
+<p align="left">
+<img src="https://github.com/ardeal/FaceBoxes_VS2015_Python/blob/master/21_Festival_Festival_21_91.jpg" alt="FaceBoxes Performance" width="1024px">
+</p>
 
 
 
