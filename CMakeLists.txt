@@ -23,8 +23,9 @@ project(Caffe C CXX)
 set(CAFFE_TARGET_VERSION "1.0.0-rc3" CACHE STRING "Caffe logical version")
 set(CAFFE_TARGET_SOVERSION "1.0.0-rc3" CACHE STRING "Caffe soname version")
 add_definitions(-DCAFFE_VERSION=${CAFFE_TARGET_VERSION})
-#set(BUILD_python 1)
-#set(BUILD_python_layer 1)
+
+set(BUILD_python 1)
+set(BUILD_python_layer 1)
 
 
 # ---[ Using cmake scripts and modules
@@ -53,7 +54,8 @@ else()
   caffe_option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 endif()
 caffe_option(BUILD_python "Build Python wrapper" ON)
-set(python_version "2" CACHE STRING "Specify which Python version to use")
+set(python_version 3 CACHE STRING "Specify which Python version to use")
+set(python_version 3)
 caffe_option(BUILD_matlab "Build Matlab wrapper" OFF)
 caffe_option(BUILD_docs   "Build documentation" ON IF UNIX OR APPLE)
 caffe_option(BUILD_python_layer "Build the Caffe Python layer" ON)
@@ -88,7 +90,7 @@ include(cmake/WindowsDownloadPrebuiltDependencies.cmake)
 include(cmake/Dependencies.cmake)
 
 
-message(STATUS "============================================================Caffe_INCLUDE_DIRS========${Caffe_INCLUDE_DIRS}")
+#message(STATUS "============================================================Caffe_INCLUDE_DIRS========${Caffe_INCLUDE_DIRS}")
 
 
 # ---[ Flags
@@ -115,7 +117,12 @@ configure_file(cmake/Templates/caffe_config.h.in "${PROJECT_BINARY_DIR}/caffe_co
 # ---[ Includes
 set(Caffe_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 set(Caffe_SRC_DIR ${PROJECT_SOURCE_DIR}/src)
-include_directories(${Caffe_INCLUDE_DIR} ${PROJECT_BINARY_DIR} ${Caffe_INCLUDE_DIRS})
+#include_directories(${Caffe_INCLUDE_DIR} ${PROJECT_BINARY_DIR} ${Caffe_INCLUDE_DIRS})
+
+
+
+
+include_directories(${PROJECT_BINARY_DIR})
 
 #link_directories(${Caffe_LINKER_LIBS})
 LINK_LIBRARIES(${Caffe_LINKER_LIBS})
@@ -125,7 +132,7 @@ LINK_LIBRARIES(${Caffe_LINKER_LIBS})
 
 #set( CMAKE_BUILD_TYPE "Release" )
 
-message(STATUS "============================================================Caffe_INCLUDE_DIR========${Caffe_INCLUDE_DIR}")
+#message(STATUS "============================================================Caffe_INCLUDE_DIR========${Caffe_INCLUDE_DIR}")
 
 include_directories(BEFORE src) # This is needed for gtest.
 # ---[ Includes & defines for CUDA
@@ -135,10 +142,10 @@ include_directories(BEFORE src) # This is needed for gtest.
 #
 # list(REMOVE_ITEM ...) invocations remove PRIVATE and PUBLIC keywords from collected definitions and include pathes
 
-message(STATUS "===============================================================> HAVE_CUDA === ${HAVE_CUDA} ===========")
+#message(STATUS "===============================================================> HAVE_CUDA === ${HAVE_CUDA} ===========")
 
 if(HAVE_CUDA)
-	message(STATUS "===============================================================> HAVE_CUDA === ${HAVE_CUDA} ===========")
+	#message(STATUS "===============================================================> HAVE_CUDA === ${HAVE_CUDA} ===========")
 
   # pass include pathes to cuda_include_directories()
   set(Caffe_ALL_INCLUDE_DIRS ${Caffe_INCLUDE_DIRS})
@@ -151,13 +158,17 @@ if(HAVE_CUDA)
   list(APPEND CUDA_NVCC_FLAGS ${Caffe_ALL_DEFINITIONS})
 endif()
 
+
+set(faceboxes_inc "${PROJECT_SOURCE_DIR}/faceboxes_lib/inc")
+#list(APPEND Caffe_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/faceboxes_lib/inc")
+
 # ---[ Subdirectories
 add_subdirectory(src/gtest)
 add_subdirectory(src/caffe)
 add_subdirectory(tools)
 #add_subdirectory(examples)
 
-message(STATUS "============================================> add_subdirectory python ============>")
+#message(STATUS "============================================> add_subdirectory python ============>")
 add_subdirectory(python)
 #add_subdirectory(matlab)
 add_subdirectory(docs)

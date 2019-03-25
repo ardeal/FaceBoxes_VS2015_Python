@@ -15,7 +15,7 @@ set(DEPENDENCIES_SHA_1900_35 "f060403fd1a7448d866d27c0e5b7dced39c0a607")
 #set(DEPENDENCIES_SHA_1900_35 "1f55dac54aeab7ae3a1cda145ca272dea606bdf9")
 
 
-message(STATUS "=================================DEPENDENCIES_URL_1900_35 = ${DEPENDENCIES_URL_1900_35}")
+#message(STATUS "=================================DEPENDENCIES_URL_1900_35 = ${DEPENDENCIES_URL_1900_35}")
 
 caffe_option(USE_PREBUILT_DEPENDENCIES "Download and use the prebuilt dependencies" ON IF MSVC)
 if(MSVC)
@@ -47,10 +47,10 @@ if(USE_PREBUILT_DEPENDENCIES)
     # set the dependencies URL and SHA1
 	
 	
-	message(STATUS "============================download url =======MSVC_VERSION ==${MSVC_VERSION}, ========_pyver=${_pyver}")
-	message(STATUS "============================DEPENDENCIES_URL_ =======${DEPENDENCIES_URL_}")
+	#message(STATUS "============================download url =======MSVC_VERSION ==${MSVC_VERSION}, ========_pyver=${_pyver}")
+	#message(STATUS "============================DEPENDENCIES_URL_ =======${DEPENDENCIES_URL_}")
     set(DEPENDENCIES_URL ${DEPENDENCIES_URL_${MSVC_VERSION}_${_pyver}})
-	message(STATUS "============================DEPENDENCIES_URL =======${DEPENDENCIES_URL}")
+	#message(STATUS "============================DEPENDENCIES_URL =======${DEPENDENCIES_URL}")
 	
 	
     set(DEPENDENCIES_SHA ${DEPENDENCIES_SHA_${MSVC_VERSION}_${_pyver}})
@@ -67,17 +67,17 @@ if(USE_PREBUILT_DEPENDENCIES)
     # download and extract the file if it does not exist or if does not match the sha1
     get_filename_component(_download_filename ${DEPENDENCIES_URL} NAME)
 
-	message(STATUS "============================DEPENDENCIES_URL =======${DEPENDENCIES_URL}")
+	#message(STATUS "============================DEPENDENCIES_URL =======${DEPENDENCIES_URL}")
 
-	message(STATUS "============================_download_filename =======${_download_filename}")
+	#message(STATUS "============================_download_filename =======${_download_filename}")
 
     set(_download_path ${CAFFE_DEPENDENCIES_DOWNLOAD_DIR}/${_download_filename})
-	message(STATUS "============================_download_path =======${_download_path}")
+	#message(STATUS "============================_download_path =======${_download_path}")
     set(_download_file 1)
     if(EXISTS ${_download_path})
         file(SHA1 ${_download_path} _file_sha)
-		message(STATUS "============================_file_sha =======${_file_sha}")
-		message(STATUS "============================DEPENDENCIES_SHA =======${DEPENDENCIES_SHA}")
+		#message(STATUS "============================_file_sha =======${_file_sha}")
+		#message(STATUS "============================DEPENDENCIES_SHA =======${DEPENDENCIES_SHA}")
 		
         if("${_file_sha}" STREQUAL "${DEPENDENCIES_SHA}")
             set(_download_file 0)
@@ -87,15 +87,15 @@ if(USE_PREBUILT_DEPENDENCIES)
             file(REMOVE ${_download_path})
         endif()
     endif()
-	message(STATUS "============================_download_file =======${_download_file}")
+	#message(STATUS "============================_download_file =======${_download_file}")
 
     if(_download_file)
 	
-		message(STATUS "1111111111111111111111111111111111111111111111")
+		#message(STATUS "1111111111111111111111111111111111111111111111")
 
-        message(STATUS "Downloading prebuilt dependencies to ${_download_path}")
+        #message(STATUS "Downloading prebuilt dependencies to ${_download_path}")
 		
-		message(STATUS "============================DEPENDENCIES_URL=======${DEPENDENCIES_URL}")
+		#message(STATUS "============================DEPENDENCIES_URL=======${DEPENDENCIES_URL}")
 		
         file(DOWNLOAD "${DEPENDENCIES_URL}"
                       "${_download_path}"

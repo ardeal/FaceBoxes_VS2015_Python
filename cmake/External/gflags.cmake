@@ -4,12 +4,12 @@ if (NOT __GFLAGS_INCLUDED) # guard against multiple includes
   # use the system-wide gflags if present
   find_package(GFlags)
   
-  message(STATUS "============================== GFLAGS_FOUND ======${GFLAGS_FOUND}")
+  #message(STATUS "============================== GFLAGS_FOUND ======${GFLAGS_FOUND}")
   
-  message(STATUS "============================== GFLAGS_FOUND ======${GFLAGS_FOUND}")
+  #message(STATUS "============================== GFLAGS_FOUND ======${GFLAGS_FOUND}")
   
   if (GFLAGS_FOUND)
-    message(STATUS "============================== GFLAGS_FOUND ======True>>>>>>>>>>>>>>>>>>>>>")
+    #message(STATUS "============================== GFLAGS_FOUND ======True>>>>>>>>>>>>>>>>>>>>>")
 
     set(GFLAGS_EXTERNAL FALSE)
   else()

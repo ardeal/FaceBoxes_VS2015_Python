@@ -33,7 +33,13 @@ foreach(source ${srcs})
 
   caffe_default_properties(${name})
 
+  if(MSVC AND COPY_PREREQUISITES)
+    caffe_copy_prerequisites(${name} USE_HARD_LINKS)
+  endif()
+
   # set back RUNTIME_OUTPUT_DIRECTORY
+  
+  #message(STATUS "========================================================================== PROJECT_BINARY_DIR ========== ${PROJECT_BINARY_DIR}")
   caffe_set_runtime_directory(${name} "${PROJECT_BINARY_DIR}/tools")
   caffe_set_solution_folder(${name} tools)
 
@@ -47,9 +53,15 @@ foreach(source ${srcs})
       endif()
   endif()
   
-  message(STATUS "========================= Generate project files =============> exe final names: ============ ${name}")
+  #message(STATUS "========================= Generate project files =============> exe final names: ============ ${name}")
 
 
   # Install
-  install(TARGETS ${name} DESTINATION bin)
+  #install(TARGETS ${name} DESTINATION bin)
+  #message(STATUS "========================================================================== CMAKE_INSTALL_BINDIR ========== ${CMAKE_INSTALL_BINDIR}")
+  install(TARGETS ${name} DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+  if(MSVC AND INSTALL_PREREQUISITES)
+    caffe_install_prerequisites(${name} DESTINATION ${CMAKE_INSTALL_BINDIR})
+  endif()
 endforeach(source)

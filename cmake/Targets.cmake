@@ -11,6 +11,7 @@ macro(caffe_set_caffe_link)
       set(CMAKE_C_FLAGS${_suffix} "${CMAKE_C_FLAGS${_suffix}} /FS")              
     endforeach()
   endif()
+  
   if(BUILD_SHARED_LIBS)
     set(Caffe_LINK caffe)
   else()
@@ -63,6 +64,9 @@ endfunction()
 #   caffe_pickup_caffe_sources(<root>)
 function(caffe_pickup_caffe_sources root)
   # put all files in source groups (visible as subfolder in many IDEs)
+  
+  message(STATUS "=============================================================PROJECT_SOURCE_DIR ==== ${PROJECT_SOURCE_DIR}")
+  
   set(caffe_export_hdr_in ${PROJECT_SOURCE_DIR}/cmake/Templates/export.hpp.in)
   set(caffe_export_hdr ${PROJECT_BINARY_DIR}/caffe/export.hpp)  
   set(caffe_symbols_hdr ${PROJECT_BINARY_DIR}/caffe/include_symbols.hpp)  

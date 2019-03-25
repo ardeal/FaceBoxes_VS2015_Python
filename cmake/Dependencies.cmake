@@ -8,11 +8,10 @@ set(Caffe_COMPILE_OPTIONS "")
 #find_package(Boost 1.54 REQUIRED COMPONENTS system thread filesystem regex)
 find_package(Boost 1.61 REQUIRED COMPONENTS system thread filesystem regex)
 
-message(STATUS "============================Boost_INCLUDE_DIRS =====${Boost_INCLUDE_DIRS}")
-message(STATUS "============================Boost_LIBRARY_DIRS =====${Boost_LIBRARY_DIRS}")
-message(STATUS "============================Boost_VERSION_STRING =====${Boost_VERSION_STRING}")
-
-message(STATUS "============================Boost_LIBRARIES =====${Boost_LIBRARIES}")
+#message(STATUS "============================Boost_INCLUDE_DIRS =====${Boost_INCLUDE_DIRS}")
+#message(STATUS "============================Boost_LIBRARY_DIRS =====${Boost_LIBRARY_DIRS}")
+#message(STATUS "============================Boost_VERSION_STRING =====${Boost_VERSION_STRING}")
+#message(STATUS "============================Boost_LIBRARIES =====${Boost_LIBRARIES}")
 
 #list(APPEND Caffe_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
 #list(APPEND Caffe_DEFINITIONS -DBOOST_ALL_NO_LIB)
@@ -27,6 +26,12 @@ add_definitions( -DBOOST_ALL_DYN_LINK )
 
 #list(APPEND Caffe_INCLUDE_DIRS PUBLIC ${GFLAGS_INCLUDE_DIRS})
 #list(APPEND Caffe_LINKER_LIBS  ${GFLAGS_LIBRARIES})
+
+#message(STATUS "=======================================PROJECT_SOURCE_DIR === ${PROJECT_SOURCE_DIR}")
+#list(APPEND Caffe_INCLUDE_DIRS PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/eigen-eigen-67e894c6cd8f_333")
+#list(APPEND Caffe_INCLUDE_DIRS PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../../thirdparty/eigen-eigen-67e894c6cd8f_333")
+
+#set(eigen_inc )
 
 
 
@@ -62,7 +67,7 @@ list(APPEND Caffe_LINKER_LIBS ${GLOG_LIBRARIES})
 
 # ---[ Google-gflags
 include("cmake/External/gflags.cmake")
-message(STATUS "============================================================> GFLAGS_INCLUDE_DIRS ===========${GFLAGS_INCLUDE_DIRS}>")
+#message(STATUS "============================================================> GFLAGS_INCLUDE_DIRS ===========${GFLAGS_INCLUDE_DIRS}>")
 list(APPEND Caffe_INCLUDE_DIRS PUBLIC ${GFLAGS_INCLUDE_DIRS})
 list(APPEND Caffe_LINKER_LIBS ${GFLAGS_LIBRARIES})
 
@@ -183,13 +188,14 @@ endif()
 
 
 # ---[ Python
-message(STATUS "===================================BUILD_python in Dependencies.cmake===${BUILD_python}")
-message(STATUS "===================================BUILD_python_layer in Dependencies.cmake===${BUILD_python_layer}")
+#message(STATUS "===================================BUILD_python in Dependencies.cmake===${BUILD_python}")
+#message(STATUS "===================================BUILD_python_layer in Dependencies.cmake===${BUILD_python_layer}")
 
 
 
+message(STATUS "======================================================Python Version in Dependencies.cmake python_version === ${python_version}")
 if(BUILD_python)
-  if(NOT "${python_version}" VERSION_LESS "3.0.0")
+  if(NOT ${python_version} VERSION_LESS 3.0.0)
     # use python3
     find_package(PythonInterp 3.0)
     find_package(PythonLibs 3.0)
@@ -197,19 +203,31 @@ if(BUILD_python)
     # Find the matching boost python implementation
     set(version ${PYTHONLIBS_VERSION_STRING})
 
+	
 
-	message(STATUS "=========================================================  PYTHONLIBS_VERSION_STRING =====${PYTHONLIBS_VERSION_STRING}")
-
+    	message(STATUS "=========================================================  PYTHONLIBS_VERSION_STRING =====${PYTHONLIBS_VERSION_STRING}")
+	message(STATUS "=========================================================  Boost_MAJOR_VERSION =====${Boost_MAJOR_VERSION}")
+	message(STATUS "=========================================================  PYTHON_VERSION_MAJOR =====${PYTHON_VERSION_MAJOR}")
 
     STRING( REGEX REPLACE "[^0-9]" "" boost_py_version ${version} )
-    find_package(Boost 1.46 COMPONENTS "python-py${boost_py_version}")
-    set(Boost_PYTHON_FOUND ${Boost_PYTHON-PY${boost_py_version}_FOUND})
+    
+    message(STATUS "============================================boost_py_version == ${boost_py_version}")
+    
+    #find_package(Boost 1.61 COMPONENTS "python-py${boost_py_version}")
+        find_package(Boost 1.61 COMPONENTS "python${PYTHON_VERSION_MAJOR}" system thread filesystem regex)
+    
+#    set(Boost_PYTHON_FOUND ${Boost_PYTHON-PY${boost_py_version}_FOUND})
+	
+	set(Boost_PYTHON_FOUND ${boost_python${PYTHON_VERSION_MAJOR}_FOUND})
+	set(Boost_PYTHON_FOUND TRUE)
 
+	message(STATUS "=================================version===${version}, ===Boost_PYTHON_FOUND == ${Boost_PYTHON_FOUND}")
     while(NOT "${version}" STREQUAL "" AND NOT Boost_PYTHON_FOUND)
       STRING( REGEX REPLACE "([0-9.]+).[0-9]+" "\\1" version ${version} )
 
       STRING( REGEX REPLACE "[^0-9]" "" boost_py_version ${version} )
-      find_package(Boost 1.46 COMPONENTS "python-py${boost_py_version}")
+      #find_package(Boost 1.61 COMPONENTS "python-py${boost_py_version}")
+      
       set(Boost_PYTHON_FOUND ${Boost_PYTHON-PY${boost_py_version}_FOUND})
 
       STRING( REGEX MATCHALL "([0-9.]+).[0-9]+" has_more_version ${version} )
@@ -218,32 +236,32 @@ if(BUILD_python)
       endif()
     endwhile()
     if(NOT Boost_PYTHON_FOUND)
-      find_package(Boost 1.46 COMPONENTS python)
+      find_package(Boost 1.61 COMPONENTS python3 system thread filesystem regex)
 	  
-	  	message(STATUS "=========================================================  Boost_PYTHON_FOUND =====${Boost_PYTHON_FOUND}")
+      message(STATUS "=========================================================  Boost_PYTHON_FOUND =====${Boost_PYTHON_FOUND}")
+	message(STATUS "=========================================================Boost_LIBRARIES  =====${Boost_LIBRARIES}")
 
 	  
     endif()
   else()
-    # disable Python 3 search
-    find_package(PythonInterp 2.7)
-    find_package(PythonLibs 2.7)
-    find_package(NumPy 1.7.1)
-	
 	message(STATUS "=========================================================  python else =================> }")
-
+	# disable Python 3 search
+	find_package(PythonInterp 2.7)
+	find_package(PythonLibs 2.7)
+	find_package(NumPy 1.7.1)
 	
-    #find_package(Boost 1.46 COMPONENTS python)
+	#find_package(Boost 1.46 COMPONENTS python)
 	
 	find_package(Boost 1.61 REQUIRED COMPONENTS python system thread filesystem regex)
-	message(STATUS "============================Boost_INCLUDE_DIRS =====${Boost_INCLUDE_DIRS}")
-	message(STATUS "============================Boost_LIBRARIES =====${Boost_LIBRARIES}")
+	message(STATUS "=====================pycaffe=======Boost_INCLUDE_DIRS =====${Boost_INCLUDE_DIRS}")
+	message(STATUS "===================pycaffe=========Boost_LIBRARIES =====${Boost_LIBRARIES}")
 	list(APPEND Caffe_INCLUDE_DIRS PUBLIC ${Boost_INCLUDE_DIRS})
 	list(APPEND Caffe_DEFINITIONS PUBLIC -DBOOST_ALL_NO_LIB)
 	list(APPEND Caffe_LINKER_LIBS ${Boost_LIBRARIES})
 		
   endif()
   if(PYTHONLIBS_FOUND AND NUMPY_FOUND AND Boost_PYTHON_FOUND)
+   message(STATUS "==================9999999999999999999999999")
     set(HAVE_PYTHON TRUE)
     if(Boost_USE_STATIC_LIBS AND MSVC)
       list(APPEND Caffe_DEFINITIONS PUBLIC -DBOOST_PYTHON_STATIC_LIB)

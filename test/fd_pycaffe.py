@@ -17,6 +17,9 @@ caffe_root = r'../'
 # os.chdir(caffe_root)
 sys.path.insert(0, caffe_root + '/python')
 import caffe
+import datetime
+
+
 
 def imglist_in_folder(root_dir, ext_names):
 
@@ -40,11 +43,20 @@ def predict_imgs_infolder(root_dir, ext_names):
     img_list = imglist_in_folder(root_dir, ext_names)
     fd = FD_Faceboxes(args.network_file, args.trained_model_file)
     for i in range(len(img_list)):
-        filepath, fullfilename = os.path.split(img_list[i])
+        img_path = img_list[i]
+        img_path = "D:/datasets/test_images/fd/0_Parade_Parade_0_178.jpg"
+        filepath, fullfilename = os.path.split(img_path)
 
         shortname, extension = os.path.splitext(fullfilename)
 
-        prediction = fd.predict_one_image(img_list[i])
+
+        t0 = datetime.datetime.now()
+        prediction = fd.predict_one_image(img_path)
+        t1 = datetime.datetime.now()
+        delta_t = t1 - t0
+        msecond = delta_t.microseconds / 1000 + delta_t.seconds * 1000
+        print(msecond)
+
 
         det_label = prediction[0, 0, :, 1]
         det_conf = prediction[0, 0, :, 2]
@@ -61,9 +73,9 @@ def predict_imgs_infolder(root_dir, ext_names):
         top_xmax = det_xmax[top_indices]
         top_ymax = det_ymax[top_indices]
 
-        img = cv2.imread(img_list[i])
+        img = cv2.imread(img_path)
         if img is None:
-            print("can not open image:", img_list[i])
+            print("can not open image:", img_path)
             return
 
         for i in range(top_conf.shape[0]):
@@ -131,7 +143,8 @@ if __name__ == '__main__':
     args = parse_args()
 
     root_dir = 'test_images'
-    ext_names = ['.jpg']
+    root_dir = r'D:\datasets\test_images\fd_fl'
+    ext_names = ['.jpg', '.png']
     predict_imgs_infolder(root_dir, ext_names)
 
     aaaaaaaaaaaaaaa=0
