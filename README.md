@@ -44,6 +44,7 @@ If you are interested in what has been changed compared to Faceboxes code base, 
 
 ### Time needed to run the code on CPU
 On Windows 10, Intel(R) Xeon(R) W-2123 CPU @ 3.60GHz, 64G memory and SSD, the time needed to run:
+<br>
 for 640*480 input image, the time needed is around 60-70ms
 <br>
 for 320*240 input image, the time needed is around 20-30ms
