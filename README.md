@@ -40,7 +40,13 @@ If you are interested in what has been changed compared to Faceboxes code base, 
 2) I have verified the code could be run on CPU correctly, but I didn't verify the GPU version.
 3) During your building the code, there might be some errors. Search them on Google or post your questions on github.
 4) You are wecome to point out any mistake in my modification.
+<br>
 
+### Time needed to run the code on CPU
+On Windows 10, Intel(R) Xeon(R) W-2123 CPU @ 3.60GHz, 64G memory and SSD, the time needed to run:
+for 640*480 input image, the time needed is around 60-70ms
+for 320*240 input image, the time needed is around 20-30ms
+<br>
 
 ### Output of the code
 I tested a few images, and the output are followed:
